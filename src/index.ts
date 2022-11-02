@@ -102,7 +102,7 @@ export default function esbuildPluginPino({
 
         const contents = await readFile(args.path, 'utf8')
 
-        const absoluteOutputPath = `\${process.cwd()}\${require('path').sep}${
+        const absoluteOutputPath = `\${__dirname}\${require('path').sep}${
           currentBuild.initialOptions.outdir || 'dist'
         }`
 
