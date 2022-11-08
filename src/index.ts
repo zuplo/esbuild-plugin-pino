@@ -102,7 +102,7 @@ export default function esbuildPluginPino({
 
         const contents = await readFile(args.path, 'utf8')
 
-        const absoluteOutputPath = `\${__dirname}\${require('path').sep}${
+        const absoluteOutputPath = `\${require('path').join(__dirname, '..')}\${require('path').sep}${
           currentBuild.initialOptions.outdir || 'dist'
         }`
 
@@ -124,7 +124,7 @@ export default function esbuildPluginPino({
             (id) =>
               `'${
                 id === 'pino-file' ? 'pino/file' : id
-              }': pinoBundlerAbsolutePath('./${id}.js')`
+              }': pinoBundlerAbsolutePath('./${id}.cjs')`
           )
           .join(',')
 
